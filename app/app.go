@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/soflex/go-package-log"
+	// log "github.com/soflex/go-package-log"
 )
 
 const (
@@ -28,34 +28,34 @@ func Start() {
 	var err error
 	Config, err = LoadConfig()
 	if err != nil {
-		log.Error("main", "LoadConfig", err.Error())
+		// log.Error("main", "LoadConfig", err.Error())
 		os.Exit(1)
 	}
 
-	log.Info("main", "inicio", "incio de servicio "+time.Now().Format("2006-01-02T15:04:05"))
+	// log.Info("main", "inicio", "incio de servicio "+time.Now().Format("2006-01-02T15:04:05"))
 
 	//configurar puerto UDP
 	listenAddr := ":" + strconv.Itoa(Config.Port)
 	addr, err := net.ResolveUDPAddr("udp", listenAddr)
 	if err != nil {
-		log.Error("app", "Start", "Error resolviendo dirección UDP: "+err.Error())
+		// log.Error("app", "Start", "Error resolviendo dirección UDP: "+err.Error())
 	}
 
 	//Escucha el puerto UDP configurado
 	conn, err := net.ListenUDP("udp", addr)
 	if err != nil {
-		log.Error("app", "Start", "Error escuchando UDP: "+err.Error())
+		// log.Error("app", "Start", "Error escuchando UDP: "+err.Error())
 	}
 	defer conn.Close()
 
-	log.Debug("app", "Start", "Escuchando en: "+listenAddr)
+	// log.Debug("app", "Start", "Escuchando en: "+listenAddr)
 
 	for {
 		//comienza a leer datos del puerto UDP
 		buf := make([]byte, maxPacketLen)
 		n, _, err := conn.ReadFromUDP(buf)
 		if err != nil {
-			log.Error("app", "Start", "Error leyendo UDP: "+err.Error())
+			// log.Error("app", "Start", "Error leyendo UDP: "+err.Error())
 			continue
 		}
 
