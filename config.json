@@ -1,0 +1,10 @@
+{
+    "port":3100,
+    "tecnologia":"GL300",
+    "reenvio":{
+        "enabled":true,
+        "host":"localhost:3100",
+        "format":"soflex"
+    },
+    "enviarACK": true
+}
