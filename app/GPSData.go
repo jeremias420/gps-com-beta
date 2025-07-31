@@ -17,6 +17,7 @@ type GPSData struct {
 	FechaGPS  *time.Time `json:"fecha_gps,omitempty"`
 	Bateria   *float64   `json:"bateria,omitempty"`
 	FechaUtc  *time.Time `json:"fecha_utc,omitempty"`
+	ContactId *int       `json:"contact_id,omitempty"`
 
 	// Canbus ------------------------------------
 	ProtocolVersion          string   `json:"protocol_version"`
