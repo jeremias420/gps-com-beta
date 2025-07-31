@@ -114,6 +114,18 @@ func parseTimeToString(t time.Time) string {
 }
 
 
+func parseStrIntToHexa(valStr string) *float64 {
+	if valStr == "" {
+		return nil
+	}
+	val, err := strconv.ParseInt(valStr, 16, 0)
+	if err != nil {
+		return nil
+	}
+	f := float64(val)
+	return &f
+}
+
 func parseInt(s string) *int {
 	if s == "" {
 		return nil
