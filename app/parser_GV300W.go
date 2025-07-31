@@ -1,11 +1,14 @@
 package app
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
 	"time"
 )
+
+// type struck
 
 const (
 	//can_report_mask_bits
@@ -148,9 +151,21 @@ var eventos = map[string]int{
 func (g *QueclinkGV300W) GetGpsJsonData() string {
 	return ""
 }
-func (g *QueclinkGV300W) GetData() []byte {
-	return nil
+func (g *QueclinkGV300W) GetDataLog() ([]byte, error) {
+	aux := struct {
+		Prefijo           string `json:"prefijo"`
+		CodigoGPS         string `json:"codigo_gps"`
+		ReportType        *int   `json:"report_type"`
+		CanbusDeviceState *int   `json:"canbus_device_state"`
+	}{
+		Prefijo:           g.CodigoGPS,
+		CodigoGPS:         g.Prefijo,
+		ReportType:        g.ReportType,
+		CanbusDeviceState: g.CanbusDeviceState,
+	}
+	return json.Marshal(aux)
 }
+
 func (g *QueclinkGV300W) GetComando() string {
 	return ""
 }
@@ -487,5 +502,7 @@ func NewQueclinkGV300W(trama string) *QueclinkGV300W {
 
 	// Enviar al bulk
 	fmt.Printf("POS: %+v\n", gps)
+	data, _ := json.MarshalIndent(gps, "", "  ")
+	fmt.Println(string(data))
 	return &gps
 }

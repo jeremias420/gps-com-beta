@@ -5,8 +5,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
-
 	// log "github.com/soflex/go-package-log"
 )
 
@@ -68,7 +66,7 @@ func Start() {
 			tecno = NewQueclinkGV300W(data)
 
 		}
-		tecno.GetData()
+		tecno.GetDataLog()
 		// tecno.GetAck()
 		// if Config.EnviarACK {
 		// 	tecno.SendAck()

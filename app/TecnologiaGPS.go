@@ -2,7 +2,7 @@ package app
 
 type TecnologiaGPS interface {
 	GetGpsJsonData() string
-	GetData() []byte
+	GetDataLog() ([]byte, error)
 	GetComando() string
 	GetCodigoGPS() string
 	GetAck() []byte
