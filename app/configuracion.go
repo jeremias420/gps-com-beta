@@ -18,7 +18,8 @@ type Configuracion struct {
 		Host    string `json:"host"`
 		Format  string `json:"format"`
 	} `json:"reenvio"`
-	EnviarACK bool `json:"enviarACK"`
+	EnviarACK        bool `json:"enviarACK"`
+	LocalizacionFija bool `json:"localizacion_fija"`
 }
 
 func GetCurrentDir() (string, error) {
