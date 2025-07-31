@@ -108,6 +108,12 @@ func parseTime(val string) *time.Time {
 
 	return &t
 }
+
+func parseTimeToString(t time.Time) string {
+	return t.Format("20060102150405")
+}
+
+
 func parseInt(s string) *int {
 	if s == "" {
 		return nil
